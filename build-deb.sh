@@ -9,7 +9,7 @@ OUT_FILE="${SCRIPT_DIR}/${PKG_NAME}_${VERSION}-1_all.deb"
 echo "Building $PKG_NAME version $VERSION..."
 
 STAGING=$(mktemp -d)
-trap "rm -rf $STAGING" EXIT
+trap 'rm -rf "$STAGING"' EXIT
 
 PLASMOID_DEST="$STAGING/usr/share/plasma/plasmoids/net.quality.monitor"
 mkdir -p "$PLASMOID_DEST/contents/config"

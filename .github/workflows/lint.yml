@@ -17,5 +17,14 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Cache pre-commit environments
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
       - name: Run pre-commit
-        uses: pre-commit/action@v3.0.1
+        run: pre-commit run --all-files
