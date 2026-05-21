@@ -11,5 +11,11 @@
     <entry name="pingInterval" type="Int">
       <default>5</default>
     </entry>
+    <entry name="amberThreshold" type="Int">
+      <default>100</default>
+    </entry>
+    <entry name="redThreshold" type="Int">
+      <default>200</default>
+    </entry>
   </group>
 </kcfg>

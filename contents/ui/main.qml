@@ -18,8 +18,10 @@ Item {
         if (!online) return theme.negativeTextColor
         var ms = parseFloat(pingMs)
         if (isNaN(ms)) return theme.disabledTextColor
-        if (ms < 100) return theme.positiveTextColor
-        if (ms < 200) return "#f0a500"
+        var amber = plasmoid.configuration.amberThreshold || 100
+        var red   = plasmoid.configuration.redThreshold   || 200
+        if (ms < amber) return theme.positiveTextColor
+        if (ms < red)   return "#f0a500"
         return theme.negativeTextColor
     }
 
