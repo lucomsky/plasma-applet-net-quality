@@ -83,17 +83,6 @@ Item {
         Layout.minimumWidth: compactRow.implicitWidth + PlasmaCore.Units.smallSpacing * 2
         Layout.minimumHeight: PlasmaCore.Units.iconSizes.medium
 
-        // Цветной фоновый pill
-        Rectangle {
-            anchors.fill: compactRow
-            anchors.margins: -PlasmaCore.Units.smallSpacing
-            radius: height / 2
-            color: root.statusColor()
-            opacity: root.firstRun ? 0.0 : 0.2
-            Behavior on color { ColorAnimation { duration: 600 } }
-            Behavior on opacity { NumberAnimation { duration: 400 } }
-        }
-
         RowLayout {
             id: compactRow
             anchors.centerIn: parent
