@@ -23,17 +23,17 @@ Updates every 5 seconds.
 ### Option 1: Script
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/net-quality-monitor-plasmoid.git
-cd net-quality-monitor-plasmoid
+git clone https://github.com/YOUR_USERNAME/plasma-applet-net-quality.git
+cd plasma-applet-net-quality
 bash install.sh
 ```
 
 ### Option 2: Manual
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/net-quality-monitor-plasmoid.git
+git clone https://github.com/YOUR_USERNAME/plasma-applet-net-quality.git
 mkdir -p ~/.local/share/plasma/plasmoids/
-cp -r net-quality-monitor-plasmoid ~/.local/share/plasma/plasmoids/net.quality.monitor
+cp -r plasma-applet-net-quality ~/.local/share/plasma/plasmoids/net.quality.monitor
 kpackagetool5 --install ~/.local/share/plasma/plasmoids/net.quality.monitor --type Plasma/Applet
 ```
 
