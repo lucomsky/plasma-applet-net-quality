@@ -1,0 +1,15 @@
+{
+    "KPlugin": {
+        "Authors": [{"Name": "Local"}],
+        "Category": "Network and Connectivity",
+        "Description": "Shows ping latency, packet loss and online/offline status",
+        "Icon": "network-wired",
+        "Id": "net.quality.monitor",
+        "License": "GPL-2.0-or-later",
+        "Name": "Net Quality Monitor",
+        "Version": "1.0"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "KPackageStructure": "Plasma/Applet"
+}
