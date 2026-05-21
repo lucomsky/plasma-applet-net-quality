@@ -1,0 +1,17 @@
+Source: plasma-applet-net-quality
+Section: kde
+Priority: optional
+Maintainer: YOUR NAME <your@email.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+Homepage: https://github.com/YOUR_USERNAME/plasma-applet-net-quality
+Rules-Requires-Root: no
+
+Package: plasma-applet-net-quality
+Architecture: all
+Depends: plasma-workspace, iputils-ping
+Description: KDE Plasma panel widget for internet connection quality
+ Shows ping latency, packet loss, and online/offline status
+ directly on the KDE Plasma panel. Color-coded indicator
+ (green/amber/red) updates automatically every few seconds.
+ Configurable ping host and update interval.
