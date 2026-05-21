@@ -38,7 +38,23 @@ Requires **Plasma 5** — Plasma 6 uses a different API and is not yet supported
 
 ## Installation
 
-### Option 1: Script
+### Option 1: .deb package (recommended)
+
+Download the latest `.deb` from the [Releases](https://github.com/YOUR_USERNAME/plasma-applet-net-quality/releases) page, then:
+
+```bash
+sudo dpkg -i plasma-applet-net-quality_*_all.deb
+```
+
+The widget is installed system-wide and available to all users. After installation, right-click the panel → **Add Widgets** → search **Net Quality** → drag onto panel.
+
+To uninstall:
+
+```bash
+sudo dpkg -r plasma-applet-net-quality
+```
+
+### Option 2: Script (per-user, no root)
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/plasma-applet-net-quality.git
@@ -46,7 +62,7 @@ cd plasma-applet-net-quality
 bash install.sh
 ```
 
-### Option 2: Manual
+### Option 3: Manual (per-user, no root)
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/plasma-applet-net-quality.git
