@@ -22,17 +22,17 @@ Updates every 5 seconds.
 
 Requires **Plasma 5** — Plasma 6 uses a different API and is not yet supported.
 
-| Distribution | Version | Plasma |
-|---|---|---|
-| Ubuntu | 22.04 LTS (Jammy) | 5.24 |
-| Ubuntu | 23.04 (Lunar) | 5.27 |
-| Ubuntu | 23.10 (Mantic) | 5.27 |
-| Ubuntu | 24.04 LTS (Noble) | 5.27 |
-| Kubuntu | 22.04 – 24.04 | 5.24 – 5.27 |
-| KDE neon | (Ubuntu 22.04 base) | 5.27 |
-| Debian | 11 (Bullseye) | 5.20 |
-| Debian | 12 (Bookworm) | 5.27 |
-| Linux Mint | 21.x | 5.24 – 5.27 |
+| Distribution | Version             | Plasma      |
+| ------------ | ------------------- | ----------- |
+| Ubuntu       | 22.04 LTS (Jammy)   | 5.24        |
+| Ubuntu       | 23.04 (Lunar)       | 5.27        |
+| Ubuntu       | 23.10 (Mantic)      | 5.27        |
+| Ubuntu       | 24.04 LTS (Noble)   | 5.27        |
+| Kubuntu      | 22.04 – 24.04       | 5.24 – 5.27 |
+| KDE neon     | (Ubuntu 22.04 base) | 5.27        |
+| Debian       | 11 (Bullseye)       | 5.20        |
+| Debian       | 12 (Bookworm)       | 5.27        |
+| Linux Mint   | 21.x                | 5.24 – 5.27 |
 
 > Ubuntu 24.10+ and Debian 13 ship Plasma 6 — not supported.
 
@@ -40,7 +40,7 @@ Requires **Plasma 5** — Plasma 6 uses a different API and is not yet supported
 
 ### Option 1: .deb package (recommended)
 
-Download the latest `.deb` from the [Releases](https://github.com/YOUR_USERNAME/plasma-applet-net-quality/releases) page, then:
+Download the latest `.deb` from the [Releases](https://github.com/lucomsky/plasma-applet-net-quality/releases) page, then:
 
 ```bash
 sudo dpkg -i plasma-applet-net-quality_*_all.deb
