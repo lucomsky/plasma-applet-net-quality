@@ -53,15 +53,25 @@ Item {
         }
 
         function run() {
-            connectSource("ping -c 3 -W 1 8.8.8.8")
+            var host = plasmoid.configuration.pingHost || "8.8.8.8"
+            connectSource("ping -c 3 -W 1 " + host)
         }
     }
 
     Timer {
-        interval: 5000
+        id: refreshTimer
+        interval: (plasmoid.configuration.pingInterval || 5) * 1000
         running: true
         repeat: true
         onTriggered: pingSource.run()
+    }
+
+    // Перезапустить таймер при изменении интервала в настройках
+    Connections {
+        target: plasmoid.configuration
+        function onPingIntervalChanged() {
+            refreshTimer.restart()
+        }
     }
 
     Component.onCompleted: pingSource.run()
@@ -123,8 +133,8 @@ Item {
             anchors.fill: parent
             mainText: "Net Quality Monitor"
             subText: root.online
-                ? "Ping: " + root.pingMs + " ms  |  Loss: " + root.packetLoss
-                : "Offline \u2014 no response from 8.8.8.8"
+                ? "Ping: " + root.pingMs + " ms  |  Loss: " + root.packetLoss + "  |  Host: " + (plasmoid.configuration.pingHost || "8.8.8.8")
+                : "Offline \u2014 no response from " + (plasmoid.configuration.pingHost || "8.8.8.8")
         }
     }
 
