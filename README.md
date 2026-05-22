@@ -2,6 +2,9 @@
 
 A minimal KDE Plasma 5 panel widget that shows internet connection quality in real time.
 
+![Net Quality Monitor in action](media/plugin-on-hover-baloon.gif)
+![Net Quality Monitor configuration](media/config-screen.png)
+
 ## What it shows
 
 - **Ping latency** in milliseconds (avg RTT to 8.8.8.8)
