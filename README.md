@@ -33,26 +33,31 @@ Requires **Plasma 5** — Plasma 6 uses a different API and is not yet supported
 | Debian       | 11 (Bullseye)       | 5.20        |
 | Debian       | 12 (Bookworm)       | 5.27        |
 | Linux Mint   | 21.x                | 5.24 – 5.27 |
+| openSUSE Leap| 15.4 – 15.6         | 5.27        |
+| Fedora       | 38, 39              | 5.27        |
+| Alma/Rocky   | 9.x (EPEL)          | 5.27        |
 
 > Ubuntu 24.10+ and Debian 13 ship Plasma 6 — not supported.
 
 ## Installation
 
-### Option 1: .deb package (recommended)
+### Option 1: Package manager (recommended)
 
-Download the latest `.deb` from the [Releases](https://github.com/lucomsky/plasma-applet-net-quality/releases) page, then:
+Download the latest `.deb` or `.rpm` from the [Releases](https://github.com/lucomsky/plasma-applet-net-quality/releases) page.
 
+**Debian/Ubuntu-based:**
 ```bash
 sudo dpkg -i plasma-applet-net-quality_*_all.deb
 ```
+To uninstall: `sudo dpkg -r plasma-applet-net-quality`
+
+**Fedora/openSUSE/RHEL-based:**
+```bash
+sudo rpm -i plasma-applet-net-quality-*.noarch.rpm
+```
+To uninstall: `sudo rpm -e plasma-applet-net-quality`
 
 The widget is installed system-wide and available to all users. After installation, right-click the panel → **Add Widgets** → search **Net Quality** → drag onto panel.
-
-To uninstall:
-
-```bash
-sudo dpkg -r plasma-applet-net-quality
-```
 
 ### Option 2: Script (per-user, no root)
 
