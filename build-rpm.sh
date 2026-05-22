@@ -9,7 +9,7 @@ OUT_FILE="${SCRIPT_DIR}/${PKG_NAME}-${VERSION}-1.noarch.rpm"
 echo "Building $PKG_NAME version $VERSION..."
 
 RPMBUILD_DIR=$(mktemp -d)
-trap "rm -rf $RPMBUILD_DIR" EXIT
+trap 'rm -rf "$RPMBUILD_DIR"' EXIT
 
 mkdir -p "$RPMBUILD_DIR/BUILD"
 mkdir -p "$RPMBUILD_DIR/RPMS"
