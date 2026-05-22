@@ -26,3 +26,11 @@ repos:
       - id: yamllint
         files: \.(yml|yaml)$
         args: ['-d', '{extends: relaxed, rules: {line-length: {max: 120}}}']
+
+  - repo: local
+    hooks:
+      - id: no-binary-packages
+        name: Check for RPM and DEB files
+        entry: Do not commit .rpm or .deb files
+        language: fail
+        files: \.(rpm|deb)$

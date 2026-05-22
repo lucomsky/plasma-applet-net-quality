@@ -1,0 +1,49 @@
+name: Build RPM package
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install build dependencies
+        run: sudo apt-get install -y rpm
+
+      - name: Build .rpm
+        run: bash build-rpm.sh
+
+      - name: Get version
+        id: version
+        run: |
+          VERSION=$(grep -oP '(?<="Version": ")[^"]+' metadata.json)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "rpm=plasma-applet-net-quality-${VERSION}-1.noarch.rpm" >> "$GITHUB_OUTPUT"
+
+      - name: Generate changelog with git-cliff
+        uses: orhun/git-cliff-action@v4
+        id: cliff
+        with:
+          config: cliff.toml
+          args: --latest --strip header
+        env:
+          OUTPUT: CHANGELOG_RELEASE.md
+
+      - name: Create release and attach .rpm
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: ${{ steps.cliff.outputs.content }}
+          files: ${{ steps.version.outputs.rpm }}
