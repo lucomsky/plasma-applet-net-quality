@@ -1,10 +1,10 @@
 Source: plasma-applet-net-quality
 Section: kde
 Priority: optional
-Maintainer: YOUR NAME <your@email.com>
+Maintainer: Alexey Lukomskiy <lucomsky@gmail.com>
 Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.6.2
-Homepage: https://github.com/YOUR_USERNAME/plasma-applet-net-quality
+Homepage: https://github.com/lucomsky/plasma-applet-net-quality
 Rules-Requires-Root: no
 
 Package: plasma-applet-net-quality
