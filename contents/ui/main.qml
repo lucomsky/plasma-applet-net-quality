@@ -6,7 +6,7 @@ import org.kde.plasma.plasmoid
 import org.kde.plasma.plasma5support as Plasma5Support
 import org.kde.kirigami as Kirigami
 
-Item {
+PlasmoidItem {
     id: root
 
     // Shared state — доступно и в compact, и в full representation
@@ -20,8 +20,8 @@ Item {
         if (!online) return Kirigami.Theme.negativeTextColor
         var ms = parseFloat(pingMs)
         if (isNaN(ms)) return Kirigami.Theme.disabledTextColor
-        var amber = plasmoid.configuration.amberThreshold || 100
-        var red   = plasmoid.configuration.redThreshold   || 200
+        var amber = Plasmoid.configuration.amberThreshold || 100
+        var red   = Plasmoid.configuration.redThreshold   || 200
         if (ms < amber) return Kirigami.Theme.positiveTextColor
         if (ms < red)   return "#f0a500"
         return Kirigami.Theme.negativeTextColor
@@ -57,14 +57,14 @@ Item {
         }
 
         function run() {
-            var host = plasmoid.configuration.pingHost || "8.8.8.8"
+            var host = Plasmoid.configuration.pingHost || "8.8.8.8"
             connectSource("ping -c 3 -W 1 " + host)
         }
     }
 
     Timer {
         id: refreshTimer
-        interval: (plasmoid.configuration.pingInterval || 5) * 1000
+        interval: (Plasmoid.configuration.pingInterval || 5) * 1000
         running: true
         repeat: true
         onTriggered: pingSource.run()
@@ -72,7 +72,7 @@ Item {
 
     // Перезапустить таймер при изменении интервала в настройках
     Connections {
-        target: plasmoid.configuration
+        target: Plasmoid.configuration
         function onPingIntervalChanged() {
             refreshTimer.restart()
         }
@@ -81,7 +81,7 @@ Item {
     Component.onCompleted: pingSource.run()
 
     // Compact representation — то что видно прямо на панели
-    Plasmoid.compactRepresentation: Item {
+    compactRepresentation: Item {
         id: compact
 
         Layout.minimumWidth: compactRow.implicitWidth + Kirigami.Units.smallSpacing * 2
@@ -126,13 +126,13 @@ Item {
             anchors.fill: parent
             mainText: "Net Quality Monitor"
             subText: root.online
-                ? "Ping: " + root.pingMs + " ms  |  Loss: " + root.packetLoss + "  |  Host: " + (plasmoid.configuration.pingHost || "8.8.8.8")
-                : "Offline \u2014 no response from " + (plasmoid.configuration.pingHost || "8.8.8.8")
+                ? "Ping: " + root.pingMs + " ms  |  Loss: " + root.packetLoss + "  |  Host: " + (Plasmoid.configuration.pingHost || "8.8.8.8")
+                : "Offline \u2014 no response from " + (Plasmoid.configuration.pingHost || "8.8.8.8")
         }
     }
 
     // Full representation — при клике на виджет
-    Plasmoid.fullRepresentation: Item {
+    fullRepresentation: Item {
         width: 200
         height: 80
 

@@ -65,9 +65,8 @@ bash install.sh
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/plasma-applet-net-quality.git
-mkdir -p ~/.local/share/plasma/plasmoids/
-cp -r plasma-applet-net-quality ~/.local/share/plasma/plasmoids/net.quality.monitor
-kpackagetool6 --install ~/.local/share/plasma/plasmoids/net.quality.monitor --type Plasma/Applet
+cd plasma-applet-net-quality
+kpackagetool6 --install . --type Plasma/Applet
 ```
 
 Then right-click the panel → **Add Widgets** → search **Net Quality** → drag onto panel.
