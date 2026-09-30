@@ -9,7 +9,7 @@ echo "Installing Net Quality Monitor plasmoid..."
 
 # Remove old install if exists
 if [ -d "$DEST" ]; then
-    kpackagetool5 --remove "$PLASMOID_ID" --type Plasma/Applet 2>/dev/null || true
+    kpackagetool6 --remove "$PLASMOID_ID" --type Plasma/Applet 2>/dev/null || true
     rm -rf "$DEST"
 fi
 
@@ -18,7 +18,7 @@ mkdir -p "$(dirname "$DEST")"
 cp -r "$SCRIPT_DIR" "$DEST"
 
 # Register with Plasma
-kpackagetool5 --install "$DEST" --type Plasma/Applet
+kpackagetool6 --install "$DEST" --type Plasma/Applet
 
 echo ""
 echo "Done! Now:"

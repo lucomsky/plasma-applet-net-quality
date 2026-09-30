@@ -1,8 +1,10 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 3.0 as PlasmaComponents
-import org.kde.plasma.plasmoid 2.0
+import QtQuick
+import QtQuick.Layouts
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.components as PlasmaComponents
+import org.kde.plasma.plasmoid
+import org.kde.plasma.plasma5support as Plasma5Support
+import org.kde.kirigami as Kirigami
 
 Item {
     id: root
@@ -14,23 +16,23 @@ Item {
     property bool firstRun: true
 
     function statusColor() {
-        if (firstRun) return theme.disabledTextColor
-        if (!online) return theme.negativeTextColor
+        if (firstRun) return Kirigami.Theme.disabledTextColor
+        if (!online) return Kirigami.Theme.negativeTextColor
         var ms = parseFloat(pingMs)
-        if (isNaN(ms)) return theme.disabledTextColor
+        if (isNaN(ms)) return Kirigami.Theme.disabledTextColor
         var amber = plasmoid.configuration.amberThreshold || 100
         var red   = plasmoid.configuration.redThreshold   || 200
-        if (ms < amber) return theme.positiveTextColor
+        if (ms < amber) return Kirigami.Theme.positiveTextColor
         if (ms < red)   return "#f0a500"
-        return theme.negativeTextColor
+        return Kirigami.Theme.negativeTextColor
     }
 
-    PlasmaCore.DataSource {
+    Plasma5Support.DataSource {
         id: pingSource
         engine: "executable"
         connectedSources: []
 
-        onNewData: {
+        onNewData: function(sourceName, data) {
             var stdout = data["stdout"] || ""
 
             var lossMatch = stdout.match(/(\d+)% packet loss/)
@@ -82,13 +84,13 @@ Item {
     Plasmoid.compactRepresentation: Item {
         id: compact
 
-        Layout.minimumWidth: compactRow.implicitWidth + PlasmaCore.Units.smallSpacing * 2
-        Layout.minimumHeight: PlasmaCore.Units.iconSizes.medium
+        Layout.minimumWidth: compactRow.implicitWidth + Kirigami.Units.smallSpacing * 2
+        Layout.minimumHeight: Kirigami.Units.iconSizes.medium
 
         RowLayout {
             id: compactRow
             anchors.centerIn: parent
-            spacing: PlasmaCore.Units.smallSpacing / 2
+            spacing: Kirigami.Units.smallSpacing / 2
 
             // Цветная точка-статус
             Rectangle {
@@ -105,7 +107,7 @@ Item {
             PlasmaComponents.Label {
                 text: root.firstRun ? "..." : (root.pingMs + "ms")
                 color: root.statusColor()
-                font.pixelSize: PlasmaCore.Theme.defaultFont.pixelSize
+                font.pixelSize: Kirigami.Theme.defaultFont.pixelSize
                 font.bold: true
                 Behavior on color { ColorAnimation { duration: 600 } }
             }
@@ -114,8 +116,8 @@ Item {
             PlasmaComponents.Label {
                 visible: !root.firstRun && parseInt(root.packetLoss) > 0
                 text: root.packetLoss
-                color: theme.negativeTextColor
-                font.pixelSize: PlasmaCore.Theme.defaultFont.pixelSize
+                color: Kirigami.Theme.negativeTextColor
+                font.pixelSize: Kirigami.Theme.defaultFont.pixelSize
                 font.bold: true
             }
         }
@@ -136,12 +138,12 @@ Item {
 
         ColumnLayout {
             anchors.centerIn: parent
-            spacing: PlasmaCore.Units.smallSpacing
+            spacing: Kirigami.Units.smallSpacing
 
             PlasmaComponents.Label {
                 Layout.alignment: Qt.AlignHCenter
                 text: root.online ? "\u2705 Online" : "\u274C Offline"
-                font.pixelSize: PlasmaCore.Theme.defaultFont.pixelSize * 1.2
+                font.pixelSize: Kirigami.Theme.defaultFont.pixelSize * 1.2
             }
             PlasmaComponents.Label {
                 Layout.alignment: Qt.AlignHCenter
@@ -151,7 +153,7 @@ Item {
             PlasmaComponents.Label {
                 Layout.alignment: Qt.AlignHCenter
                 text: "Loss: " + root.packetLoss
-                color: parseInt(root.packetLoss) > 0 ? theme.negativeTextColor : theme.textColor
+                color: parseInt(root.packetLoss) > 0 ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.textColor
             }
         }
     }

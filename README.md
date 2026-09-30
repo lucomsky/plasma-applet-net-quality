@@ -1,6 +1,6 @@
 # Net Quality Monitor — KDE Plasma Plasmoid
 
-A minimal KDE Plasma 5 panel widget that shows internet connection quality in real time.
+A minimal KDE Plasma 6 panel widget that shows internet connection quality in real time.
 
 ![Net Quality Monitor in action](media/plugin-on-hover-baloon.gif)
 ![Net Quality Monitor configuration](media/config-screen.png)
@@ -18,29 +18,20 @@ Updates every 5 seconds.
 
 ## Requirements
 
-- KDE Plasma 5.20 or later (Plasma 6 is not supported)
+- KDE Plasma 6.0 or later (For Plasma 5, use the `plasma5` tag)
 - `ping` utility (standard on all Linux systems)
 
 ## Supported distributions
 
-Requires **Plasma 5** — Plasma 6 uses a different API and is not yet supported.
+Requires **Plasma 6**.
 
 | Distribution | Version             | Plasma      |
 | ------------ | ------------------- | ----------- |
-| Ubuntu       | 22.04 LTS (Jammy)   | 5.24        |
-| Ubuntu       | 23.04 (Lunar)       | 5.27        |
-| Ubuntu       | 23.10 (Mantic)      | 5.27        |
-| Ubuntu       | 24.04 LTS (Noble)   | 5.27        |
-| Kubuntu      | 22.04 – 24.04       | 5.24 – 5.27 |
-| KDE neon     | (Ubuntu 22.04 base) | 5.27        |
-| Debian       | 11 (Bullseye)       | 5.20        |
-| Debian       | 12 (Bookworm)       | 5.27        |
-| Linux Mint   | 21.x                | 5.24 – 5.27 |
-| openSUSE Leap| 15.4 – 15.6         | 5.27        |
-| Fedora       | 38, 39              | 5.27        |
-| Alma/Rocky   | 9.x (EPEL)          | 5.27        |
-
-> Ubuntu 24.10+ and Debian 13 ship Plasma 6 — not supported.
+| Ubuntu       | 24.10+              | 6.x         |
+| KDE neon     | (Ubuntu 24.04 base) | 6.x         |
+| Debian       | 13 (Trixie)         | 6.x         |
+| Fedora       | 40+                 | 6.x         |
+| Arch Linux   | Rolling             | 6.x         |
 
 ## Installation
 
@@ -76,7 +67,7 @@ bash install.sh
 git clone https://github.com/YOUR_USERNAME/plasma-applet-net-quality.git
 mkdir -p ~/.local/share/plasma/plasmoids/
 cp -r plasma-applet-net-quality ~/.local/share/plasma/plasmoids/net.quality.monitor
-kpackagetool5 --install ~/.local/share/plasma/plasmoids/net.quality.monitor --type Plasma/Applet
+kpackagetool6 --install ~/.local/share/plasma/plasmoids/net.quality.monitor --type Plasma/Applet
 ```
 
 Then right-click the panel → **Add Widgets** → search **Net Quality** → drag onto panel.
@@ -84,7 +75,7 @@ Then right-click the panel → **Add Widgets** → search **Net Quality** → dr
 ## Uninstall
 
 ```bash
-kpackagetool5 --remove net.quality.monitor --type Plasma/Applet
+kpackagetool6 --remove net.quality.monitor --type Plasma/Applet
 rm -rf ~/.local/share/plasma/plasmoids/net.quality.monitor
 ```
 
